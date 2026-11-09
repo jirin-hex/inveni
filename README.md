@@ -146,7 +146,6 @@ Administrator login:
 
 http://localhost:3000/login.html
 
-
 ## Database
 
 Inveni uses MongoDB and currently maintains three collections:
