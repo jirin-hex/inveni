@@ -8,25 +8,17 @@
     "express": "^5.3.0",
     "express-rate-limit": "^8.7.3",
     "jsonwebtoken": "^9.0.3",
-    "mongoose": "^9.11.4",
-    "react": "^19.3.1",
-    "react-dom": "^19.3.1",
-    "react-router-dom": "^7.18.5"
+    "mongoose": "^9.11.4"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^6.1.2",
-    "nodemon": "^3.1.14",
-    "vite": "^8.3.5"
+    "nodemon": "^3.1.14"
   },
-  "name": "recomces",
+  "name": "Inveni",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
   "scripts": {
-    "dev": "vite",
-    "server": "nodemon app.js",
-    "build": "vite build",
-    "preview": "vite preview"
+    "server": "nodemon app.js"
   },
   "keywords": [],
   "author": "",
