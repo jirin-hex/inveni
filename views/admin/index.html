@@ -1,0 +1,227 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Workspace — Inveni</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/admin.css">
+
+    <script defer src="../js/config.js"></script>
+    <script defer src="../js/api.js"></script>
+    <script defer src="../js/admin.js"></script>
+
+    <style>
+        .sidebar-logout-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.65rem;
+            width: 100%;
+            margin-top: 1.2rem;
+            padding: 0.75rem 1rem;
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            border-radius: 8px;
+            background: rgba(239, 68, 68, 0.07);
+            color: #fca5a5;
+            font-family: inherit;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .sidebar-logout-link:hover {
+            background: rgba(239, 68, 68, 0.16);
+            border-color: rgba(239, 68, 68, 0.4);
+            color: #ffffff;
+            transform: translateY(-1px);
+        }
+
+        .sidebar-logout-link svg {
+            width: 17px;
+            height: 17px;
+            stroke: currentColor;
+        }
+    </style>
+</head>
+
+<body data-admin-page="dashboard">
+
+<div class="admin-shell">
+
+    <aside class="admin-sidebar">
+
+        <a class="brand" href="../index.html">
+            <span class="brand-mark">i</span>
+            <span>inveni<span class="brand-dot">.</span></span>
+        </a>
+
+        <div class="sidebar-label">WORKSPACE</div>
+
+        <nav class="admin-nav">
+            <a class="active" href="index.html">
+                <span>◫</span> Overview
+            </a>
+
+            <a href="resources.html">
+                <span>▤</span> All resources
+            </a>
+
+            <a href="pending.html">
+                <span>◷</span> Pending review
+                <i id="pending-nav-count"></i>
+            </a>
+
+            <a href="countries.html">
+                <span>◎</span> Countries
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <div class="sidebar-avatar">I</div>
+
+            <div>
+                <strong>Inveni workspace</strong>
+                <small>Content management</small>
+            </div>
+
+            <button type="button" id="logout-link" class="sidebar-logout-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+                    <path d="M16 17l5-5-5-5"/>
+                    <path d="M21 12H9"/>
+                </svg>
+                Log out
+            </button>
+
+        </div>
+    </aside>
+
+    <main class="admin-main">
+
+        <header class="admin-topbar">
+            <div>
+                <span class="eyebrow">INVENI / WORKSPACE</span>
+                <h1>Overview</h1>
+            </div>
+
+            <a class="public-link" href="../index.html">
+                View public site ↗
+            </a>
+        </header>
+
+        <section class="admin-welcome">
+            <div>
+                <span class="welcome-kicker">YOUR LIBRARY, AT A GLANCE</span>
+                <h2>
+                    A little progress
+                    <br>
+                    <em>goes a long way.</em>
+                </h2>
+                <p>Here's what's happening across the Inveni collection.</p>
+            </div>
+
+            <div class="welcome-stamp">
+                <span>✳</span>
+                <small>KEEP<br>CURATING</small>
+            </div>
+        </section>
+
+        <section class="stats-layout" id="dashboard-stats">
+
+            <div class="stat-feature">
+                <span class="stat-label">TOTAL SUBMISSIONS</span>
+                <strong data-stat="total">—</strong>
+                <small>All resources received</small>
+                <span class="stat-flower">✳</span>
+            </div>
+
+            <div class="stat-small stat-pending">
+                <span class="stat-label">AWAITING REVIEW</span>
+                <strong data-stat="pending">—</strong>
+                <a href="pending.html">Review queue ↗</a>
+            </div>
+
+            <div class="stat-small">
+                <span class="stat-label">APPROVED</span>
+                <strong data-stat="approved">—</strong>
+                <small>Visible in the library</small>
+            </div>
+
+            <div class="stat-small stat-country">
+                <span class="stat-label">COUNTRIES</span>
+                <strong data-stat="countryCount">—</strong>
+                <a href="countries.html">See representation ↗</a>
+            </div>
+
+        </section>
+
+        <section class="admin-lower">
+
+            <div class="admin-section">
+                <div class="admin-section-head">
+                    <div>
+                        <span class="eyebrow">NEEDS YOUR EYES</span>
+                        <h2>Recently submitted</h2>
+                    </div>
+
+                    <a href="pending.html" class="under-link">
+                        Open review queue ↗
+                    </a>
+                </div>
+
+                <div id="recent-pending" class="admin-compact-list">
+                    <div class="loading-line">
+                        <span></span> Loading submissions...
+                    </div>
+                </div>
+            </div>
+
+            <aside class="admin-quick">
+                <span class="eyebrow">QUICK ACCESS</span>
+
+                <a href="resources.html">
+                    <span class="quick-icon">▤</span>
+                    <span>
+                        <strong>Manage resources</strong>
+                        <small>Search, review and remove entries</small>
+                    </span>
+                    <b>↗</b>
+                </a>
+
+                <a href="countries.html">
+                    <span class="quick-icon">◎</span>
+                    <span>
+                        <strong>Country overview</strong>
+                        <small>See where recommendations come from</small>
+                    </span>
+                    <b>↗</b>
+                </a>
+            </aside>
+
+        </section>
+
+        <p class="admin-security-note">
+            Admin API endpoints are currently unauthenticated. Do not expose
+            this workspace publicly until backend authentication and
+            authorization are implemented.
+        </p>
+
+    </main>
+
+</div>
+
+<div id="toast-region" class="toast-region"></div>
+
+</body>
+</html>
